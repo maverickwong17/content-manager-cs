@@ -14,6 +14,7 @@ $(function () {
             data: { "Id": id },
             datatype: "json",
             success: function (data) {
+                console.log(data)
                 $('#EditContactModalContent').html(data);
                 $('#modal-editContact').modal('show');
                 $("#ServerErrorAlert").hide();
@@ -37,6 +38,8 @@ $(function () {
 
         if (emailAddressType === "Personal") {
             emailTypeClass = "badge-primary"; //blue badge
+        } else if (emailAddressType === "Primary") {
+            emailTypeClass = "badge-info"; //blue badge
         } else {
             emailTypeClass = "badge-success"; //green badge
         }
@@ -132,6 +135,7 @@ $(function () {
         }
 
         function validateInputs(data) {
+            console.log(data)
             let isValid = true;
             $('.invalidMessage').hide();
             $('.form-control').removeClass("invalidInput");
