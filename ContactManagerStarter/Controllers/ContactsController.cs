@@ -82,7 +82,7 @@ namespace ContactManager.Controllers
             Console.WriteLine(contactList);
             foreach (var contact in contactList)
             {
-                Console.WriteLine(String.Join(", ", contact.EmailAddresses.Email));
+                Console.WriteLine(String.Join(", ", contact.EmailAddresses));
             }
             return PartialView("_ContactTable", new ContactViewModel { Contacts = contactList });
         }
