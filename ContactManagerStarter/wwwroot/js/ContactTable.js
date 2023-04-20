@@ -36,6 +36,8 @@ $(function () {
         let emailTypeClass;
 
         if (emailAddressType === "Personal") {
+            emailTypeClass = "badge-info"; //blue badge
+        } else if (emailAddressType === "Primary") {
             emailTypeClass = "badge-primary"; //blue badge
         } else {
             emailTypeClass = "badge-success"; //green badge
@@ -132,6 +134,7 @@ $(function () {
         }
 
         function validateInputs(data) {
+            console.log(data)
             let isValid = true;
             $('.invalidMessage').hide();
             $('.form-control').removeClass("invalidInput");

@@ -46,6 +46,10 @@
                                 @{
                                     if (emailAddress.Type == EmailType.Personal)
                                     {
+                                        <span class="badge badge-info m-l-10"> @emailAddress.Type</span>
+                                    }
+                                    else if (emailAddress.Type == EmailType.Primary)
+                                    {
                                         <span class="badge badge-primary m-l-10"> @emailAddress.Type</span>
                                     }
                                     else
@@ -72,6 +76,7 @@
             </div>
             <div class="form-group col-md-4">
                 <select id="newEmailAddressType" class="form-control">
+                    <option value="Primary">Primary</option>
                     <option value="Personal">Personal</option>
                     <option value="Business">Business</option>
                 </select>

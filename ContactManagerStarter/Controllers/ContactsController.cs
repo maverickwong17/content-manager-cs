@@ -49,7 +49,7 @@ namespace ContactManager.Controllers
         public async Task<IActionResult> EditContact(Guid id)
         {
             var contact = await _context.Contacts
-                .Include(x => x.EmailAddresses)
+                .Include(x => x.EmailAddresses) 
                 .Include(x => x.Addresses)
                 .FirstOrDefaultAsync(x => x.Id == id);
 
@@ -75,9 +75,15 @@ namespace ContactManager.Controllers
         public async Task<IActionResult> GetContacts()
         {
             var contactList = await _context.Contacts
+                .Include(x => x.EmailAddresses)
                 .OrderBy(x => x.FirstName)
                 .ToListAsync();
 
+            Console.WriteLine(contactList);
+            foreach (var contact in contactList)
+            {
+                Console.WriteLine(String.Join(", ", contact.EmailAddresses));
+            }
             return PartialView("_ContactTable", new ContactViewModel { Contacts = contactList });
         }
 
