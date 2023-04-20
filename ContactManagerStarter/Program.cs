@@ -53,3 +53,24 @@ app.MapControllerRoute(
 app.MapHub<ContactHub>("/contacthub");
 
 app.Run();
+
+
+/*
+ 
+Requirements
+
+
+Any database changes must be done using a migration with Entity Framework
+
+
+Add a warning if an email or mail address was typed, but not added to the list, in
+New/Edit Contact when saving
+
+{done}
+Add a new feature: The ability to set a primary Email from the list in New/Edit Contact to
+display in the Contact Grid
+
+
+Update the grid to show the primary email address, if none is set use the first one
+
+ */
