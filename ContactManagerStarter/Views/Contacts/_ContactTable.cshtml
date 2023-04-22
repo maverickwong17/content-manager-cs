@@ -1,4 +1,4 @@
-﻿
+﻿@using ContactManager.Data
 @*
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 *@
@@ -9,6 +9,7 @@
             <th scope="col">Title</th>
             <th scope="col">First Name</th>
             <th scope="col">Last Name</th>
+            @*add column header*@
             <th scope="col">Primary Email</th>
             <th></th>
         </tr>
@@ -20,9 +21,34 @@
                 <td class="editContact" data-id="@contact.Id">@contact.Title</td>
                 <td class="editContact" data-id="@contact.Id">@contact.FirstName</td>
                 <td class="editContact" data-id="@contact.Id">@contact.LastName</td>
-                <td class="editContact" data-id="@contact.Id">
-                    @String.Join(", ", @contact.EmailAddresses)
-                </td>
+                @*display primary email logic*@
+                @{
+                    if (contact.EmailAddresses.Count == 0)
+                    {
+                        <td class="editContact" data-id="@contact.Id"></td>
+                    } 
+                    else if(contact.EmailAddresses.Count == 1)
+                    {
+                        <td class="editContact" data-id="@contact.Id">@contact.EmailAddresses[0].Email</td>
+                    } 
+                    else
+                    {
+                    bool isPrimary = false;
+                    for(int i = 0; i < contact.EmailAddresses.Count; i++)
+                    {
+                        var email = contact.EmailAddresses[i];
+                        if (email.Type == EmailType.Primary && isPrimary == false)
+                        {
+                            isPrimary = true;
+                                <td class="editContact" data-id="@contact.Id">@email.Email</td>
+                            }
+                        }
+                        if (isPrimary == false)
+                        {
+                            <td class="editContact" data-id="@contact.Id">@contact.EmailAddresses[0].Email</td>
+                        }
+                    }
+                }
                 <td class="whiteBackground defaultCursor"><a class="redText float-right pointer deleteContact" title="Delete Contact" data-toggle="modal" data-target="#modal-delete" data-id="@contact.Id">X</a></td>
             </tr>
         }
