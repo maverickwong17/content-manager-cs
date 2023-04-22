@@ -79,12 +79,6 @@ namespace ContactManager.Controllers
                 .OrderBy(x => x.FirstName)
                 .ToListAsync();
 
-
-            Console.WriteLine(contactList);
-            foreach (var contact in contactList)
-            {
-                Console.WriteLine(String.Join(", ", contact.EmailAddresses));
-            }
             return PartialView("_ContactTable", new ContactViewModel { Contacts = contactList });
         }
 
