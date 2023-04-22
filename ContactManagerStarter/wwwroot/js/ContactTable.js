@@ -84,7 +84,7 @@ $(function () {
             addressTypeClass = "badge-success"; //green badge
         }
 
-        if (validateAddress(address)) {
+        //if (validateAddress(address)) {
             $("#addressList").append(
                 '<li class="list-group-item addressListItem" data-street1="' + street1 + '" data-street2="' + street2 + '" data-city="' +
                 city + '" data-state="' + state + '" data-zip="' + zip + '" data-type="' + addressType + '">' +
@@ -99,10 +99,10 @@ $(function () {
             $('#newAddressState').val("");
             $('#newAddressZip').val("");
 
-            $('.addressInput').removeClass("invalidInput");
+            //$('.addressInput').removeClass("invalidInput");
 
-            $('.addressFeedback').hide();
-        } 
+            //$('.addressFeedback').hide();
+        //} 
     });
 
     $(document).on("click", ".removeEmail", function () {
@@ -137,7 +137,6 @@ $(function () {
         }
 
         function validateInputs(data) {
-            console.log(data)
             let street1 = $('#newAddressStreet1').val();
             let street2 = $('#newAddressStreet2').val();
             let city = $('#newAddressCity').val();

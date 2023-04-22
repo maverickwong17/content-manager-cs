@@ -79,7 +79,7 @@ namespace ContactManager.Controllers
                 .OrderBy(x => x.FirstName)
                 .ToListAsync();
 
-     
+
             Console.WriteLine(contactList);
             foreach (var contact in contactList)
             {
